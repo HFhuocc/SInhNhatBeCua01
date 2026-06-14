@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Sinh Nhật Trúc Anh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sea-blue: #00a8ff;
+            --deep-ocean: #0097e6;
+            --soft-blue: #e1f5fe;
+            --gold: #fbc531;
+            --text-dark: #2f3640;
+            --coral-pink: #ff6b81;
+        }
+
+        * { 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(180deg, #ffffff 0%, var(--soft-blue) 100%);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Hiệu ứng sóng biển bồng bềnh nền */
+        .ocean-bg {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 150px;
+            background: url('https://cdn.pixabay.com/photo/2017/04/08/10/23/wave-2212906_960_720.png');
+            background-size: 1000px 150px;
+            opacity: 0.15; z-index: -1;
+            animation: waveAnim 15s linear infinite;
+        }
+        @keyframes waveAnim { 0% { background-position-x: 0; } 100% { background-position-x: 1000px; } }
+
+        header { 
+            text-align: center; 
+            padding: 60px 20px 40px 20px; 
+            position: relative;
+        }
+
+        /* Biểu tượng Bánh Kem Sinh Nhật */
+        .birthday-icon {
+            width: 110px; height: auto;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 10px 15px rgba(0, 151, 230, 0.2));
+            animation: bounce 2s ease-in-out infinite;
+        }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+        .main-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.8rem;
+            color: var(--deep-ocean);
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            line-height: 1.2;
+        }
+
+        .sub-title {
+            font-weight: 700;
+            color: var(--coral-pink);
+            font-size: 1.5rem;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        /* Bố cục căn giữa sang trọng rộng rãi */
+        .container { 
+            max-width: 750px; 
+            margin: 0 auto; 
+            padding: 0 20px 100px 20px; 
+        }
+
+        /* Card thiết kế hiện đại, hiệu ứng trồi lên mượt mà */
+        .section-card {
+            background: white;
+            border-radius: 35px;
+            padding: 35px;
+            margin-bottom: 45px;
+            box-shadow: 0 20px 40px rgba(0, 151, 230, 0.1);
+            border: 2px solid rgba(0, 168, 255, 0.05);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .section-card.visible { opacity: 1; transform: translateY(0); }
+
+        h2 {
+            display: flex; align-items: center; gap: 12px;
+            color: var(--deep-ocean); font-size: 1.6rem; margin-top: 0;
+            font-weight: 700;
+        }
+
+        /* Video Section */
+        .video-wrapper {
+            position: relative; width: 100%; border-radius: 25px;
+            overflow: hidden; background: #000; box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        video { width: 100%; display: block; }
+
+        /* Bức thư lời chúc ấm áp cho Trúc Anh */
+        .wish-text {
+            font-size: 1.3rem; line-height: 1.8;
+            color: #57606f; font-style: italic;
+            text-align: center; background: #f0fbff;
+            padding: 30px; border-radius: 25px;
+            position: relative;
+            border-left: 6px solid var(--sea-blue);
+        }
+
+        /* Recorder Section */
+        .recorder-area { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+
+        .mic-btn {
+            width: 80px; height: 80px;
+            border-radius: 50%; border: none;
+            background: var(--sea-blue);
+            color: white; font-size: 2.2rem;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 168, 255, 0.3);
+            display: flex; justify-content: center; align-items: center;
+            transition: all 0.3s ease;
+        }
+        .mic-btn:hover { transform: scale(1.1); background: var(--deep-ocean); }
+        .mic-btn.recording {
+            background: #ff4757;
+            animation: pulseMic 1.5s infinite;
+        }
+        @keyframes pulseMic {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 20px rgba(255, 71, 87, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+        }
+
+        audio {
+            width: 100%; height: 48px;
+            filter: sepia(10%) saturate(100%) hue-rotate(160deg);
+        }
+
+        /* TỰ ĐỘNG TƯƠNG THÍCH MÀN HÌNH ĐIỆN THOẠI (RESPONSIVE) */
+        @media (max-width: 600px) {
+            header { padding-top: 45px; }
+            .main-title { font-size: 2.6rem; }
+            .sub-title { font-size: 1.2rem; }
+            .birthday-icon { width: 90px; }
+            .section-card { padding: 25px; border-radius: 25px; margin-bottom: 35px; }
+            h2 { font-size: 1.4rem; }
+            .wish-text { font-size: 1.1rem; padding: 20px; }
+            .mic-btn { width: 70px; height: 70px; font-size: 1.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ocean-bg"></div>
+
+    <header>
+        <svg class="birthday-icon" viewBox="0 0 100 100">
+            <rect x="25" y="55" width="50" height="30" rx="5" fill="#f78fb3"/>
+            <rect x="20" y="70" width="60" height="15" rx="5" fill="#cf6a87"/>
+            <rect x="45" y="30" width="10" height="25" fill="#f8c291"/>
+            <circle cx="50" cy="25" r="5" fill="#fbc531">
+                <animate attributeName="r" values="4;6;4" dur="1s" repeatCount="indefinite" />
+            </circle>
+            <path d="M25 55 Q50 45 75 55" fill="white" opacity="0.3"/>
+            <circle cx="35" cy="65" r="3" fill="white" opacity="0.5"/>
+            <circle cx="65" cy="75" r="3" fill="white" opacity="0.5"/>
+        </svg>
+        <h1 class="main-title">HAPPY BIRTHDAY</h1>
+        <div class="sub-title">BÉ CUA (TRÚC ANH) 💖</div>
+        <div class="sub-title">07-08-2026 </div>
+    </header>
+
+    <div class="container">
+        <section class="section-card visible">
+            <h2>🎥 Vlog đặc biệt dành cho Bé Cua</h2>
+            <div class="video-wrapper">
+                <video src="Videotest01.mp4.mp4" controls playsinline></video>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>💌 Lời Tâm Sự</h2>
+            <div class="wish-text">
+                "Gửi Bé Cua (Trúc Anh) yêu dấu của ba mẹ, <br><br>
+                Mừng ngày con cất tiếng khóc chào đời! Chúc công chúa nhỏ của ba mẹ luôn xinh đẹp, ngoan ngoãn và tràn đầy tiếng cười. <br>
+                Dù sau này con lớn khôn, con vẫn mãi là Trúc Anh bé bỏng, là món quà tuyệt vời nhất mà cuộc đời đã dành tặng cho gia đình mình. <br><br>
+                Yêu con nhất trên đời!"
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>🎙️ Lời Muốn Nói</h2>
+            <div class="recorder-area">
+                <button id="micBtn" class="mic-btn" title="Chạm để bắt đầu nói">🎙️</button>
+                <audio id="audioPlayer" controls></audio>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Hiệu ứng hiện card mượt mà khi cuộn trang
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section-card').forEach(card => observer.observe(card));
+
+        // --- HỆ THỐNG LƯU TRỮ VĨNH VIỄN (IndexedDB) ---
+        const dbName = "TrucAnhBirthdayDB";
+        let db;
+        const request = indexedDB.open(dbName, 1);
+        const audioPlayer = document.getElementById('audioPlayer');
+        const micBtn = document.getElementById('micBtn');
+
+        request.onupgradeneeded = (e) => {
+            db = e.target.result;
+            if (!db.objectStoreNames.contains("audios")) db.createObjectStore("audios", { keyPath: "id" });
+        };
+
+        request.onsuccess = (e) => {
+            db = e.target.result;
+            const transaction = db.transaction(["audios"], "readonly");
+            const store = transaction.objectStore("audios");
+            const getRequest = store.get("voice_msg");
+            getRequest.onsuccess = () => { if (getRequest.result) audioPlayer.src = getRequest.result.data; };
+        };
+
+        // --- XỬ LÝ GHI ÂM ---
+        let mediaRecorder;
+        let audioChunks = [];
+        let isRecording = false;
+
+        micBtn.addEventListener('click', async () => {
+            if (!isRecording) {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    mediaRecorder = new MediaRecorder(stream);
+                    audioChunks = [];
+                    mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+                    mediaRecorder.onstop = () => {
+                        const blob = new Blob(audioChunks, { type: 'audio/mp3' });
+                        const reader = new FileReader();
+                        reader.readAsDataURL(blob);
+                        reader.onloadend = () => {
+                            const base64 = reader.result;
+                            audioPlayer.src = base64;
+                            const tx = db.transaction(["audios"], "readwrite");
+                            tx.objectStore("audios").put({ id: "voice_msg", data: base64 });
+                        };
+                    };
+                    mediaRecorder.start();
+                    isRecording = true;
+                    micBtn.classList.add('recording');
+                    micBtn.innerText = "⏹️";
+                } catch (err) { alert("Hãy cho phép quyền Micro để ghi âm lời chúc cho bé nhé!"); }
+            } else {
+                mediaRecorder.stop();
+                mediaRecorder.stream.getTracks().forEach(t => t.stop());
+                isRecording = false;
+                micBtn.classList.remove('recording');
+                micBtn.innerText = "🎙️";
+            }
+        });
+    </script>
+</body>
+</html>
