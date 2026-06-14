@@ -70,7 +70,6 @@
             letter-spacing: 2px;
         }
 
-        /* Tăng kích thước tối đa của container để phần video được rộng rãi, to rõ ràng hơn */
         .container { 
             max-width: 850px; 
             margin: 0 auto; 
@@ -97,11 +96,16 @@
             font-weight: 700;
         }
 
-        /* Khung chứa Video nâng cấp: Tự động căn tỷ lệ to rộng đẹp mắt */
+        /* Khung chứa Video */
+        .video-container-box {
+            position: relative;
+            width: 100%;
+        }
+
         .video-wrapper {
             position: relative; 
             width: 100%; 
-            padding-bottom: 56.25%; /* Tỷ lệ vàng 16:9 chống bị đen viền */
+            padding-bottom: 56.25%; 
             height: 0;
             border-radius: 25px;
             overflow: hidden; 
@@ -113,6 +117,30 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
             border: none;
+        }
+
+        /* NÚT PHÓNG TO TỰ CHẾ - BẤM LÀ TO TOÀN MÀN HÌNH TRÊN ĐIỆN THOẠI */
+        .fullscreen-btn {
+            margin-top: 15px;
+            width: 100%;
+            background: linear-gradient(135deg, var(--sea-blue), var(--deep-ocean));
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 18px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 151, 230, 0.25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        .fullscreen-btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 4px 10px rgba(0, 151, 230, 0.2);
         }
 
         /* Bức thư lời chúc ấm áp cho Trúc Anh */
@@ -154,6 +182,9 @@
             filter: sepia(10%) saturate(100%) hue-rotate(160deg);
         }
 
+        /* Hỗ trợ chế độ phóng to chuẩn CSS phòng hờ cho thiết bị iOS */
+        :-webkit-full-screen { width: 100% !important; height: 100% !important; }
+
         /* TỰ ĐỘNG TƯƠNG THÍCH MÀN HÌNH ĐIỆN THOẠI (RESPONSIVE) */
         @media (max-width: 600px) {
             header { padding-top: 45px; }
@@ -164,6 +195,7 @@
             h2 { font-size: 1.4rem; }
             .wish-text { font-size: 1.1rem; padding: 20px; }
             .mic-btn { width: 70px; height: 70px; font-size: 1.9rem; }
+            .fullscreen-btn { font-size: 1rem; padding: 12px; }
         }
     </style>
 </head>
@@ -190,8 +222,11 @@
     <div class="container">
         <section class="section-card visible">
             <h2>🎥 Thước Phim Kỷ Niệm</h2>
-            <div class="video-wrapper">
-                <iframe src="https://drive.google.com/file/d/1kHRqixn7z5cYy6CWA5Wls6W0LZdqwPEv/preview" allow="autoplay" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+            <div class="video-container-box">
+                <div class="video-wrapper" id="videoWrapper">
+                    <iframe id="videoFrame" src="https://drive.google.com/file/d/1kHRqixn7z5cYy6CWA5Wls6W0LZdqwPEv/preview" allow="autoplay" allowfullscreen="true"></iframe>
+                </div>
+                <button class="fullscreen-btn" onclick="openFullscreen();">📱 Bấm Để Xem Toàn Màn Hình</button>
             </div>
         </section>
 
@@ -215,6 +250,18 @@
     </div>
 
     <script>
+        // HÀM ÉP TRÌNH DUYỆT ĐIỆN THOẠI PHẢI PHÓNG TO VIDEO TOÀN MÀN HÌNH
+        function openFullscreen() {
+            const elem = document.getElementById("videoWrapper");
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Khắc phục lỗi trên Safari iPhone */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+        }
+
         // Hiệu ứng hiện card mượt mà khi cuộn trang
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
