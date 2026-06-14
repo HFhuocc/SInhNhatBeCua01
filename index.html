@@ -70,9 +70,9 @@
             letter-spacing: 2px;
         }
 
-        /* Bố cục căn giữa rộng rãi */
+        /* Tăng kích thước tối đa của container để phần video được rộng rãi, to rõ ràng hơn */
         .container { 
-            max-width: 750px; 
+            max-width: 850px; 
             margin: 0 auto; 
             padding: 0 20px 100px 20px; 
         }
@@ -97,11 +97,11 @@
             font-weight: 700;
         }
 
-        /* Khung chứa Video Google Drive dạng Iframe ổn định tuyệt đối */
+        /* Khung chứa Video nâng cấp: Tự động căn tỷ lệ to rộng đẹp mắt */
         .video-wrapper {
             position: relative; 
             width: 100%; 
-            padding-bottom: 56.25%; /* Tỷ lệ khung hình 16:9 chuẩn video */
+            padding-bottom: 56.25%; /* Tỷ lệ vàng 16:9 chống bị đen viền */
             height: 0;
             border-radius: 25px;
             overflow: hidden; 
@@ -191,7 +191,7 @@
         <section class="section-card visible">
             <h2>🎥 Thước Phim Kỷ Niệm</h2>
             <div class="video-wrapper">
-                <iframe src="https://drive.google.com/file/d/1kHRqixn7z5cYy6CWA5Wls6W0LZdqwPEv/preview" allow="autoplay"></iframe>
+                <iframe src="https://drive.google.com/file/d/1kHRqixn7z5cYy6CWA5Wls6W0LZdqwPEv/preview" allow="autoplay" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
             </div>
         </section>
 
