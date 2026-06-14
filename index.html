@@ -70,7 +70,7 @@
             letter-spacing: 2px;
         }
 
-        /* Bố cục căn giữa sang trọng rộng rãi */
+        /* Bố cục căn giữa rộng rãi */
         .container { 
             max-width: 750px; 
             margin: 0 auto; 
@@ -97,12 +97,21 @@
             font-weight: 700;
         }
 
-        /* Video Section */
+        /* Khung chứa Video mượt mà, hỗ trợ giao diện xem từ Google Drive */
         .video-wrapper {
-            position: relative; width: 100%; border-radius: 25px;
-            overflow: hidden; background: #000; box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            position: relative; 
+            width: 100%; 
+            border-radius: 25px;
+            overflow: hidden; 
+            background: #000; 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
-        video { width: 100%; display: block; }
+        video { 
+            width: 100%; 
+            max-height: 480px;
+            display: block; 
+            object-fit: contain;
+        }
 
         /* Bức thư lời chúc ấm áp cho Trúc Anh */
         .wish-text {
@@ -174,19 +183,18 @@
         </svg>
         <h1 class="main-title">HAPPY BIRTHDAY</h1>
         <div class="sub-title">BÉ CUA (TRÚC ANH) 💖</div>
-        <div class="sub-title">07-08-2026 </div>
     </header>
 
     <div class="container">
         <section class="section-card visible">
-            <h2>🎥 Vlog đặc biệt dành cho Bé Cua</h2>
+            <h2>🎥 Thước Phim Kỷ Niệm</h2>
             <div class="video-wrapper">
-                <video src="Videotest01.mp4.mp4" controls playsinline></video>
+                <video src="https://docs.google.com/uc?export=download&id=1kHRqixn7z5cYy6CWA5Wls6W0LZdqwPEv" controls playsinline></video>
             </div>
         </section>
 
         <section class="section-card">
-            <h2>💌 Lời Tâm Sự</h2>
+            <h2>💌 Thư Gửi Con Gái Yêu</h2>
             <div class="wish-text">
                 "Gửi Bé Cua (Trúc Anh) yêu dấu của ba mẹ, <br><br>
                 Mừng ngày con cất tiếng khóc chào đời! Chúc công chúa nhỏ của ba mẹ luôn xinh đẹp, ngoan ngoãn và tràn đầy tiếng cười. <br>
@@ -196,7 +204,7 @@
         </section>
 
         <section class="section-card">
-            <h2>🎙️ Lời Muốn Nói</h2>
+            <h2>🎙️ Gửi Lời Chúc Giọng Nói</h2>
             <div class="recorder-area">
                 <button id="micBtn" class="mic-btn" title="Chạm để bắt đầu nói">🎙️</button>
                 <audio id="audioPlayer" controls></audio>
