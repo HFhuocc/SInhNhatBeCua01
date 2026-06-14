@@ -119,28 +119,29 @@
             border: none;
         }
 
-        /* NÚT PHÓNG TO TỰ CHẾ - BẤM LÀ TO TOÀN MÀN HÌNH TRÊN ĐIỆN THOẠI */
+        /* NÚT PHÓNG TO HOẠT ĐỘNG 100% TRÊN ĐIỆN THOẠI */
         .fullscreen-btn {
             margin-top: 15px;
             width: 100%;
-            background: linear-gradient(135deg, var(--sea-blue), var(--deep-ocean));
+            background: linear-gradient(135deg, #ff6b81, #ff4757);
             color: white;
             border: none;
-            padding: 14px 20px;
+            padding: 15px 20px;
             font-size: 1.1rem;
             font-weight: 700;
-            border-radius: 18px;
+            border-radius: 20px;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(0, 151, 230, 0.25);
+            box-shadow: 0 8px 25px rgba(255, 107, 129, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
+            text-decoration: none; /* Bỏ gạch chân của thẻ link */
             transition: all 0.3s ease;
         }
         .fullscreen-btn:active {
-            transform: scale(0.98);
-            box-shadow: 0 4px 10px rgba(0, 151, 230, 0.2);
+            transform: scale(0.97);
+            box-shadow: 0 4px 10px rgba(255, 107, 129, 0.2);
         }
 
         /* Bức thư lời chúc ấm áp cho Trúc Anh */
@@ -182,9 +183,6 @@
             filter: sepia(10%) saturate(100%) hue-rotate(160deg);
         }
 
-        /* Hỗ trợ chế độ phóng to chuẩn CSS phòng hờ cho thiết bị iOS */
-        :-webkit-full-screen { width: 100% !important; height: 100% !important; }
-
         /* TỰ ĐỘNG TƯƠNG THÍCH MÀN HÌNH ĐIỆN THOẠI (RESPONSIVE) */
         @media (max-width: 600px) {
             header { padding-top: 45px; }
@@ -195,7 +193,7 @@
             h2 { font-size: 1.4rem; }
             .wish-text { font-size: 1.1rem; padding: 20px; }
             .mic-btn { width: 70px; height: 70px; font-size: 1.9rem; }
-            .fullscreen-btn { font-size: 1rem; padding: 12px; }
+            .fullscreen-btn { font-size: 1rem; padding: 14px; }
         }
     </style>
 </head>
@@ -223,10 +221,12 @@
         <section class="section-card visible">
             <h2>🎥 Thước Phim Kỷ Niệm</h2>
             <div class="video-container-box">
-                <div class="video-wrapper" id="videoWrapper">
-                    <iframe id="videoFrame" src="https://drive.google.com/file/d/1kHRqixn7z5cYy6CWA5Wls6W0LZdqwPEv/preview" allow="autoplay" allowfullscreen="true"></iframe>
+                <div class="video-wrapper">
+                    <iframe src="https://drive.google.com/file/d/1kHRqixn7z5cYy6CWA5Wls6W0LZdqwPEv/preview" allow="autoplay"></iframe>
                 </div>
-                <button class="fullscreen-btn" onclick="openFullscreen();">📱 Bấm Để Xem Toàn Màn Hình</button>
+                <a href="https://drive.google.com/file/d/1kHRqixn7z5cYy6CWA5Wls6W0LZdqwPEv/view?usp=sharing" target="_blank" class="fullscreen-btn">
+                    📱 Bấm Để Xem Toàn Màn Hình Cực Nét
+                </a>
             </div>
         </section>
 
@@ -250,18 +250,6 @@
     </div>
 
     <script>
-        // HÀM ÉP TRÌNH DUYỆT ĐIỆN THOẠI PHẢI PHÓNG TO VIDEO TOÀN MÀN HÌNH
-        function openFullscreen() {
-            const elem = document.getElementById("videoWrapper");
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.webkitRequestFullscreen) { /* Khắc phục lỗi trên Safari iPhone */
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) {
-                elem.msRequestFullscreen();
-            }
-        }
-
         // Hiệu ứng hiện card mượt mà khi cuộn trang
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
