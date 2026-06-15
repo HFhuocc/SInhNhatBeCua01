@@ -96,7 +96,7 @@
             font-weight: 700;
         }
 
-        /* Khung chứa Video */
+        /* Khung chứa Video - ĐÃ SỬA ĐỂ TỰ ĐỘNG FIX TỶ LỆ KHÔNG BỊ CẮT XÉN */
         .video-container-box {
             position: relative;
             width: 100%;
@@ -105,7 +105,7 @@
         .video-wrapper {
             position: relative; 
             width: 100%; 
-            padding-bottom: 56.25%; 
+            padding-bottom: 56.25%; /* Tỷ lệ vàng 16:9 cho video ngang */
             height: 0;
             border-radius: 25px;
             overflow: hidden; 
@@ -117,11 +117,13 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
             border: none;
+            /* Fix lỗi crop trên môi trường di động */
+            object-fit: contain; 
         }
 
-        /* NÚT PHÓNG TO HOẠT ĐỘNG 100% TRÊN ĐIỆN THOẠI */
+        /* NÚT PHÓNG TO HOẠT ĐỘNG 100% TRÊN ĐIỆN THOẠI - ĐÃ THÊM KHOẢNG CÁCH */
         .fullscreen-btn {
-            margin-top: 15px;
+            margin-top: 20px; /* Tăng khoảng cách để UI thông thoáng hơn */
             width: 100%;
             background: linear-gradient(135deg, #ff6b81, #ff4757);
             color: white;
@@ -136,7 +138,7 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
-            text-decoration: none; /* Bỏ gạch chân của thẻ link */
+            text-decoration: none;
             transition: all 0.3s ease;
         }
         .fullscreen-btn:active {
@@ -193,7 +195,7 @@
             h2 { font-size: 1.4rem; }
             .wish-text { font-size: 1.1rem; padding: 20px; }
             .mic-btn { width: 70px; height: 70px; font-size: 1.9rem; }
-            .fullscreen-btn { font-size: 1rem; padding: 14px; }
+            .fullscreen-btn { font-size: 1rem; padding: 14px; margin-top: 18px; }
         }
     </style>
 </head>
@@ -222,7 +224,7 @@
             <h2>🎥 Thước Phim Kỷ Niệm</h2>
             <div class="video-container-box">
                 <div class="video-wrapper">
-                    <iframe src="https://drive.google.com/file/d/1kHRqixn7z5cYy6CWA5Wls6W0LZdqwPEv/preview" allow="autoplay"></iframe>
+                    <iframe src="https://docs.google.com/get_video_info?docid=1kHRqixn7z5cYy6CWA5Wls6W0LZdqwPEv&border=0" allow="autoplay" allowfullscreen></iframe>
                 </div>
                 <a href="https://drive.google.com/file/d/1kHRqixn7z5cYy6CWA5Wls6W0LZdqwPEv/view?usp=sharing" target="_blank" class="fullscreen-btn">
                     📱 Bấm Để Xem Toàn Màn Hình Cực Nét
